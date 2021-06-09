@@ -4,33 +4,12 @@
 \begin_header
 \save_transient_properties true
 \origin unavailable
-\textclass elsarticle
+\textclass revtex4
 \begin_preamble
-% specify here the journal
-\makeatletter
-\def\ps@pprintTitle{%
-\let\@oddhead\@empty
-\let\@evenhead\@empty
-\def\@oddfoot{\footnotesize\itshape
-% line below modified from elsarticle.cls
- \ifx\@journal\@empty Date prepared
-\else\@journal\fi\hfill\today}%
-\let\@evenfoot\@oddfoot}
-\makeatother
-
-%\fancyhf{} % sets both header and footer to nothing
-\renewcommand{\headrulewidth}{0pt}
-
-%\flushbottom
-%\raggedbottom
-% use this if you need line numbers
-%\usepackage{lineno}
+\tabcolsep=8pt
 \end_preamble
+\options aps,preprint
 \use_default_options false
-\begin_modules
-fix-cm
-fixltx2e
-\end_modules
 \maintain_unincluded_children false
 \language english
 \language_package default
@@ -51,10 +30,10 @@ fixltx2e
 \graphics default
 \default_output_format default
 \output_sync 0
-\bibtex_command bibtex
+\bibtex_command default
 \index_command default
 \paperfontsize default
-\spacing onehalf
+\spacing single
 \use_hyperref false
 \papersize default
 \use_geometry false
@@ -70,7 +49,7 @@ fixltx2e
 \use_package undertilde 1
 \cite_engine natbib
 \cite_engine_type authoryear
-\biblio_style plainnat
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
@@ -91,8 +70,8 @@ fixltx2e
 \quotes_style english
 \dynamic_quotes 0
 \papercolumns 1
-\papersides 2
-\paperpagestyle fancy
+\papersides 1
+\paperpagestyle default
 \tracking_changes false
 \output_changes false
 \html_math_output 0
@@ -102,54 +81,33 @@ fixltx2e
 
 \begin_body
 
-\begin_layout BeginFrontmatter
-
-\end_layout
-
 \begin_layout Title
-Flink: The feeless distributed payment network
-\begin_inset Flex Titlenotemark
-status open
-
-\begin_layout Plain Layout
-t1
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Title footnote
-This document is a collaborative effort.
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-t1
-\end_layout
-
-\end_inset
-
-
+Flink: The Fast Distributed Payment Network
 \end_layout
 
 \begin_layout Author
-M.
+Matej
 \begin_inset space ~
 \end_inset
 
 Grasic
 \end_layout
 
+\begin_layout Author URL
+
+https://www.flinkcoin.org/
+\end_layout
+
 \begin_layout Address
 \begin_inset CommandInset href
 LatexCommand href
-name "matejgrasic@flinkcoin.org"
 target "matejgrasic@flinkcoin.org"
-type "mailto:"
 literal "false"
 
+\end_inset
+
+
+\begin_inset VSpace bigskip
 \end_inset
 
 
@@ -173,40 +131,6 @@ ze the payment system.
  safety requirements.
 \end_layout
 
-\begin_layout Keywords
-Cryptocurrency 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-sep
-\end_layout
-
-\end_inset
-
- Feeless 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-sep
-\end_layout
-
-\end_inset
-
- Low latency
-\end_layout
-
-\begin_layout EndFrontmatter
-
-\end_layout
-
 \begin_layout Section
 Introduction
 \end_layout
@@ -215,7 +139,7 @@ Introduction
 Distributed ledger technology are on the arise since the introduction of
  Bitcoin in 
 \begin_inset CommandInset citation
-LatexCommand citet
+LatexCommand cite
 key "bitcoin"
 literal "false"
 
@@ -370,7 +294,17 @@ Block Design
 \end_layout
 
 \begin_layout Standard
-A common state block was chosen to simplify the design.
+A common state block was chosen to simplify the design shown in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Block-design"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
  Having all the state information in every block speeds up transaction times
  and also simplifies the design.
  It also enhances the node synchronization and the transaction validation
@@ -378,6 +312,314 @@ A common state block was chosen to simplify the design.
  It does raise storage requirements, but this will be optimized with state
  pruning.
  
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement !h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Block-design"
+
+\end_inset
+
+Block design.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="13" columns="2">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top" width="0pt">
+<column alignment="left" valignment="top" width="0pt">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Field
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Description
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+version
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+block version, for future changes
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+timestamp
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+transaction timestamp, special importance in the system
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+blockType
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+block type
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+previousBlockHash
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+previous block hash value
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+accountId
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+block for which account
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+representativeNodeId
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+account chosen representative
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+balance
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+current account balance
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+amount
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+transaction amount
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+sendAccountId
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+receiving account id
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+receiveBlockHash
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+block we receive funds from
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+referenceCode
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+payment reference code useful for accounting
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row endhead="true">
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+publicKeys
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+last valid public keys
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -766,16 +1008,12 @@ Here we present a distributed feeless payment system with a fast transaction
  
 \end_layout
 
-\begin_layout Section*
-—————–
-\end_layout
-
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
 btprint "btPrintCited"
 bibfiles "whitepaper"
-options "bibtotoc,elsarticle-harv"
+options "plain"
 
 \end_inset
 

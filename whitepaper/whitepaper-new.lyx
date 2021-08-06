@@ -53,7 +53,7 @@
 \use_package stmaryrd 1
 \use_package undertilde 1
 \cite_engine natbib
-\cite_engine_type authoryear
+\cite_engine_type numerical
 \biblio_style plain
 \use_bibtopic false
 \use_indices false
@@ -120,21 +120,21 @@ literal "false"
 \end_layout
 
 \begin_layout Abstract
-Cryptocurrency emerged as an interesting technology that promised to revolutioni
-ze the payment system.
- But as time has passed cryptocurrencies have become pushed into a corner
- and isolated to store of value speculation.
- Cryptocurrencies are hardly ever used for payment and most transactions
- happen only on centralized systems of exchanges.
+Abstract Cryptocurrency appeared as an interesting technology that promised
+ to revolutionize the payment system.
+ But over time, cryptocurrencies have been backed into a corner and confined
+ to store of value speculation.
+ Cryptocurrencies are almost never used as a means of payment and most transacti
+ons only take place through centralized exchange systems.
  Here we introduce a feeless cryptocurrency based on a block-lattice design
- and asynchronous transaction and block confirmation.
- Flink is designed for fast transaction speeds of more than 4000 transactions
+ with asynchronous transactions and block confirmations.
+ Flink is designed for high transaction speeds of more than 4000 transactions
  per second with low latency of around 3 seconds or less.
- With these characteristics, Flink is the ideal cryptocurrency for consumer
- transactions as well as high frequency and zero-fee business transactions.
- Security-wise, all cryptographic elements are incorporated in a swappable
- design such that cryptographic functions can be changed in case of quantum
- safety requirements.
+ With these features, Flink is the ideal cryptocurrency for consumer transaction
+s as well as high-frequency and zero-fee business transactions.
+ In terms of security, all cryptographic elements are integrated into a
+ replaceable design so that cryptographic functions can be swapped out in
+ case of quantum security requirements.
 \end_layout
 
 \begin_layout Section
@@ -142,8 +142,15 @@ Introduction
 \end_layout
 
 \begin_layout Standard
-Distributed ledger technology (DLT) is on the rise since the introduction
- of Bitcoin in 
+Distributed ledger technology (DLT) (
+\begin_inset CommandInset citation
+LatexCommand citet
+key "dlt1,MaullRoger2017DLTA"
+literal "false"
+
+\end_inset
+
+) has been on the rise since the introduction of Bitcoin in 
 \begin_inset CommandInset citation
 LatexCommand citet
 key "bitcoin"
@@ -152,18 +159,18 @@ literal "false"
 \end_inset
 
 .
- Since Bitcoin, many new and promising DLT projects have been introduced
- but none has really achieved global adaptation as a payment system.
- DLT based currencies or cryptocurrencies have mostly been isolated to function
- as a store of value, similar to gold and the idea of a global, fair and
+ Since Bitcoin, many new and promising DLT projects have been introduced,
+ but none have truly achieved global adaptation as a payment system.
+ DLT-based currencies or cryptocurrencies have mostly been isolated to act
+ as stores of value, much like gold, and the idea of a global, fair and
  cheap payment system has mostly been abandoned.
- The reason for this is the government's regulations but also high transaction
- fees and slow transaction verifications.
- For a DLT currency to be really effective and better than government-backed
- currencies the transaction speed needs to be near-instant with zero or
+ This is due to government regulations, but also high transaction fees and
+ slow transaction verifications.
+ For a DLT currency to be truly effective and better than government-backed
+ currencies, transaction speeds must be near-instantaneous with zero or
  negligible fees.
- Without this improvement, DLT currencies provide no real value to the public
- and the consumer and therefore no reason for usage.
+ Without this improvement, DLT currencies offer no real value to the public
+ or consumers, and thus no reason to use them.
 \end_layout
 
 \begin_layout Subsection
@@ -171,12 +178,12 @@ Motivation
 \end_layout
 
 \begin_layout Standard
-Although many new DTL technologies have been introduced since the introduction
+Although many new DTL technologies have been introduced since the launch
  of Bitcoin.
- Real usage of a cryptocurrency as a payment system is still lacking as
- more projects are now gaining traction as an DeFI (decentralized finance)
+ The actual use of a cryptocurrency as a payment system is still lacking
+ as more and more projects gain traction as a DeFI (decentralised finance)
  use case.
- Therefore room for improvement is still huge.
+ Therefore, there is still a lot of room for improvement.
  
 \end_layout
 
@@ -186,38 +193,60 @@ The perfect payment system is:
 
 \begin_layout Itemize
 Feeless or almost zero fees: Zero fee makes sending money attractive and
- allows for different business opportunities.
+ enables various business opportunities.
  
 \end_layout
 
 \begin_layout Itemize
-Fast: Low latency is important to enabling fast consumer payments for goods.
+Fast: Low latency is important to enable fast payments for goods.
 \end_layout
 
 \begin_layout Itemize
-Cheap to run: The system has to be available and simple to run.
+Inexpensive to operate: The system must be available and easy to operate.
  
 \end_layout
 
 \begin_layout Itemize
-Secure: Obviously security is of utmost importance as trust in the system
+Secure: Security is of course of paramount importance, as trust in the system
  is required.
 \end_layout
 
 \begin_layout Standard
-In December 2014, Nano (RaiBlocks) was one of the first Directed Acyclic
- Graph (DAG) based cryptocurrencies that promised all of the properties.
- DAG is now implemented in many projects alike.
- The DAG-based cryptocurrencies have a performance advantage as transactions
- can be confirmed asynchronously instead of synchronously like in a linear
- system like blockchain.
- This lowers transaction confirmation times drastically and mostly makes
- them instant (1-3s range) and also improves transaction throughput to over
- 1000 tps.
- Nano fulfilled most of the goals but availability and stability suffer
- from the feeless design.
- Without transaction fees, DDOS attacks are very cheap and recent attacks
- to the Nano network further pronounced this vulnerability.
+Nano (
+\begin_inset CommandInset citation
+LatexCommand citet
+key "nano"
+literal "false"
+
+\end_inset
+
+) was one of the first DAG (Directed Acyclic Graph) (
+\begin_inset CommandInset citation
+LatexCommand citet
+key "dag"
+literal "false"
+
+\end_inset
+
+) based cryptocurrencies that promised all these features.
+ DAG is now implemented in many projects alike (
+\begin_inset CommandInset citation
+LatexCommand citet
+key "iota,byteball"
+literal "false"
+
+\end_inset
+
+).The DAG-based cryptocurrencies have a performance advantage in that transaction
+s can be confirmed asynchronously, rather than synchronously as in a linear
+ system like the blockchain.
+ This drastically lowers transaction confirmation times, making them mostly
+ instantaneous (in the range of 1-3s) and also improves transaction throughput
+ to over 1000 tps.
+ Nano has achieved most of its goals, but availability and stability suffer
+ from its uncaring design.
+ Without transaction fees, DDOS attacks are very cheap, and recent attacks
+ on the Nano network have further highlighted this vulnerability.
  
 \end_layout
 
@@ -268,13 +297,14 @@ Basic Concept
 
 \begin_layout Standard
 Here we introduce Flink, a zero fee, high speed and secure network that
- is optimized for enterprise usage but can also be run on standard hardware
- by individuals.
- The system is optimized for fast transactions based on a peering algorithm
- that connects most influenceable nodes in a way that block confirmation
- latencies is minimized.
- The system follows a similar architecture approach to the Nano currency.
- Where each account has its own blockchain shown on Figure 
+ is optimized for enterprise use, but can also be run by individuals on
+ commodity hardware.
+ The system is optimized for fast transactions and is based on a peering
+ algorithm that connects the most influential nodes in a way that minimizes
+ block confirmation latency.
+ The system follows a similar architecture to Nano, which is based on a
+ block lattice.
+ Each account has its own blockchain, which is shown on Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:basic"
@@ -285,10 +315,10 @@ noprefix "false"
 \end_inset
 
 .
- Similar to Nano the account chain can only be updated by the account owner.
- Further, as account blockchain changes can be done independently, we don’t
- need a common block to fill up with transactions, the confirmation latency
- is heavily reduced.
+ Here, the account chain can only be updated by the account holder.
+ Since the blockchain of the accounts can be changed independently, we do
+ not need a common block to fill up with transactions and the confirmation
+ latency is greatly reduced.
  
 \end_layout
 
@@ -297,14 +327,13 @@ Account Based
 \end_layout
 
 \begin_layout Standard
-Rather than using a UTXO transaction design used in Bitcoin and many other
+Instead of a UTXO transaction design, as used in Bitcoin and many other
  cryptocurrencies, an account-based design was chosen instead.
- The advantage of such design is simplicity, speed and usually also lower
- storage requirements.
- This approach has one drawback which is anonymity which is harder to provide
- in the DLT design.
+ The advantage of such an approach is simplicity, speed, and usually lower
+ memory requirements.
+ The only disadvantage of this approach is anonymity, which is more difficult
+ to ensure in a DLT design.
  For this 2nd layer, solutions are planned.
- 
 \end_layout
 
 \begin_layout Subsection
@@ -312,19 +341,379 @@ Sending Funds
 \end_layout
 
 \begin_layout Standard
-Because every account blockchain can only be modified by the account owner.
- Transferring funds can only be done with two transactions.
- First account A makes a send transaction to account B, then account B claims
- the transaction by making a new receive transaction.
- This approach is more complicated compared to blockchains like ethereum
- and bitcoin, but advantages are in the confirmation process which can be
- asynchronous and therefore very scalable.
+Because each account blockchain can only be changed by the account holder.
+ A money transfer can only be done with two transactions.
+ First, account A performs a send transaction to account B, then account
+ B requests the transaction by a new receive transaction.
+ This approach is more complicated compared to blockchains like Ethereum
+ and Bitcoin, but the advantages lie in the confirmation process, which
+ can be asynchronous and therefore very scalable.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/consensus.png
+	scale 65
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Node weight assignment from accounts.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:consenus"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+System Design
+\end_layout
+
+\begin_layout Standard
+The system is based on a block-lattice-like structure, where each account
+ has its own blockchain.
+ It uses an optimized consensus voting based algorithm that reduces latency
+ and network traffic.
+ The block is optimized for size and speed and represents a user transaction.
+ The node network is also highly interconnected to further reduce transaction
+ latency.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/algorithm.png
+	scale 65
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+New block voting process.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:algorithm"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Consensus Algorithm 
+\end_layout
+
+\begin_layout Standard
+Consensus is achieved using a voting-based consenous algorithm and recently
+ PoV (Proof of Vote) (
+\begin_inset CommandInset citation
+LatexCommand citet
+key "10.3389/fbloc.2020.00011"
+literal "false"
+
+\end_inset
+
+) consensus algorithms become well known in the scientific literature.
+ Like PoW, they are Byzantine fault-tolerant, secure and stable (
+\begin_inset CommandInset citation
+LatexCommand citet
+key "neo"
+literal "false"
+
+\end_inset
+
+).
+ As in ORV (Open Representative Voting) (
+\begin_inset CommandInset citation
+LatexCommand citet
+key "nano"
+literal "false"
+
+\end_inset
+
+), voting weights are determined by the account holder's selection of a
+ representative.
+ The representative is assigned a voting weight relative to the balance
+ of all accounts assigned to him, as shown in the Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:consenus"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ This approach is particularly suitable for systems, since the cost of validatin
+g a transaction is low and without risk.
+ With PoW (Proof of Work) the cost is very high and with PoS (Proof of Stake)
+ there is some risk when staking the currency.
+\end_layout
+
+\begin_layout Standard
+Flooding the network directly with votes would lead to message overload
+ and would be slow and inefficient.
+ To limit the number of votes and messages, some systems choose a middleman
+ who then performs the validation process.
+ While this increases performance, it decreases resilience to a potential
+ attack.
+ Here, we describe a consensus process in which the system is not flooded
+ with votes, but the node receiving the block is tasked with procuring all
+ the necessary vote weights to satisfy the
+\begin_inset Formula $\left[\frac{W_{T}}{2}+1\right]<W_{c}$
+\end_inset
+
+ condition, where 
+\begin_inset Formula $W_{T}$
+\end_inset
+
+ is the total weight of all the coins and 
+\begin_inset Formula $W_{C}$
+\end_inset
+
+ is the weight of the collected votes.
+ First, the node receiving the new block collects the votes of the nodes
+ one by one so that the majority rule is satisfied.
+ Once the votes are collected and the majority rule is satisfied, a voting
+ package is created with the new block and all the votes.
+ This is then sent to all nodes using the network flooding procedure described
+ below, shown on Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:algorithm"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Proof of Vote on Blocks
+\end_layout
+
+\begin_layout Standard
+The user creates a block and sends it to a node.
+ The node that receives the block first is responsible for obtaining the
+ required voting majority before it creates the voting package and injects
+ it into the network.
+ The nodes validate the block and vote independently.
+ The majority weight is calculated with:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+W_{C}^{X}=\sum_{i=1}^{N}W_{i}^{X}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where 
+\begin_inset Formula $N$
+\end_inset
+
+ is the number of votes collected and 
+\begin_inset Formula $X$
+\end_inset
+
+ is the block voted on.
+ If the majority condition is not met, 
+\begin_inset Formula $N$
+\end_inset
+
+ can be increased, which in practice means that a vote is requested from
+ more nodes.
+ If all or most nodes are requested and no transaction vote majority is
+ reached, the block is discarded.
+\end_layout
+
+\begin_layout Subsection
+Network Flooding
+\end_layout
+
+\begin_layout Standard
+In network flooding, a message received by a node is sent over all outgoing
+ connections except the one over which it was received (
+\begin_inset CommandInset citation
+LatexCommand citet
+key "inproceedings"
+literal "false"
+
+\end_inset
+
+).
+ In uncontrolled flooding, each node unconditionally distributes messages
+ to each of its neighbors.
+ Without conditional logic to prevent infinite repetition of the same packet.
+ In controlled flooding, two algorithms are common: SNCF (Sequence Number
+ Controlled Flooding) and RPF (reverse-path forwarding).
+ In SNCF, the node appends its own address and sequence number to the packet
+ because each node has a memory of addresses and sequence numbers.
+ When it receives a packet in memory, it immediately discards it, while
+ in RPF, the node only forwards the packet.
+\end_layout
+
+\begin_layout Standard
+The system uses a custom SNCF algorithm where each message is given a unique
+ identifier and the nodes remember all the identifiers already processed.
+ The node information is not added to the original message as this would
+ slow down the process, alter the source message and increase the size of
+ the message.
+ Nodes also do not send messages to all connections, but only to connections
+ that are designated for flooding.
+ This limits network traffic while providing multiple direct connections
+ during the voice collection phase.
+ The number of messages needed for a block confirmation can be calculated
+ with:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+M=N\ast c_{f}+N_{W}*2
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where 
+\begin_inset Formula $M$
+\end_inset
+
+ is the number of messages 
+\begin_inset Formula $N$
+\end_inset
+
+ is the total number of nodes in the network, 
+\begin_inset Formula $c_{f}$
+\end_inset
+
+ is the number of connections each node provides for flooding and 
+\begin_inset Formula $N_{w}$
+\end_inset
+
+ is the number of nodes required to achieve majority voting.
+ 
+\end_layout
+
+\begin_layout Subsection
+Partition Tolerance
+\end_layout
+
+\begin_layout Standard
+If the network is split into two completly separate partitions 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta$
+\end_inset
+
+, where 
+\begin_inset Formula $\alpha\cap\beta=\oslash$
+\end_inset
+
+.
+ As long one partition 
+\begin_inset Formula $\alpha,\beta$
+\end_inset
+
+ satisfies the condition 
+\begin_inset Formula $\left[\frac{W_{T}}{2}+1\right]<W_{c}$
+\end_inset
+
+, consenus can be achieved and new blocks can be confirmed (
+\begin_inset CommandInset citation
+LatexCommand citet
+key "crypto-2019-29871"
+literal "false"
+
+\end_inset
+
+).
+ This is possible because 
+\begin_inset Formula $W_{T}$
+\end_inset
+
+ is global and does not change when the size of the network nodes is smaller.
+ If the majority condition is not satisfied, the network becomes temporarily
+ unavailable.
+ Here, according to Brewer's CAP theorem in 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Diack_Ndiaye_Slimani_2013"
+literal "false"
+
+\end_inset
+
+, availability is sacrificed for consistency and partition tolerance.
  
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float table
-placement h
+placement H
 wide false
 sideways false
 status open
@@ -632,76 +1021,12 @@ last valid public keys
 
 \end_layout
 
-\begin_layout Section
-System Design
-\end_layout
-
-\begin_layout Standard
-As already explained the system is based on a block-lattice like structure,
- where every account has its own blockchain.
- Consensus is achieved using ORV (Open Representative Voting) introduced
- in Nano.
- ORV is a mechanism where each account holder selects a representative.
- The representative receives a voting weight relative to the balance of
- all accounts assigned to him.
- ORV is especially suited for feeless systems as the cost of validating
- a transaction is low and without any risk.
- With PoW the cost is very high and with PoS there is some risk involved
- as you are obligated to stake some currency.
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename figures/consensus.png
-	scale 65
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Node weight assignment from accounts.
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:consenus"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Consensus Algorithm 
-\end_layout
-
-\begin_layout Standard
-gdfgdfgdfg
-\end_layout
-
 \begin_layout Subsection
 Block Design
 \end_layout
 
 \begin_layout Standard
-A common state block was chosen to simplify the design shown in Table 
+To simplify the design shown in Table 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:block-design"
@@ -711,24 +1036,23 @@ noprefix "false"
 
 \end_inset
 
-.
- Having all the state information in every block speeds up transaction times
- and also simplifies the design.
- It also enhances the node synchronization and the transaction validation
- process.
- It does raise storage requirements, but this will be optimized with state
+, a common state block was chosen.
+ Having all state information in each block speeds up transaction times
+ and simplifies the design.
+ It also improves node synchronization and the transaction validation process.
+ Although this increases the memory requirements, this is optimized by state
  pruning.
  
 \end_layout
 
 \begin_layout Standard
-The design of the system and the block is heavily focused on change agility.
- Once a distributed system is in production it’s extremely difficult to
+The design of the system and block is strongly focused on change flexibility.
+ Once a distributed system is in production, it is extremely difficult to
  change the block design.
- To ease the burden we include a version code so that block can switch from
- one to another version.
- Also, the serialization process is done so that new fields can be added
- easily.
+ To ease the burden, we have incorporated a version code so that the block
+ can change from one version to another.
+ Also, the serialization process is done in such a way that new fields can
+ be added easily.
 \end_layout
 
 \begin_layout Subsection
@@ -736,12 +1060,11 @@ Transaction Types
 \end_layout
 
 \begin_layout Standard
-Although all the block structure for every transaction is the same.
- The system still functionally differentiates between different transactions
+Although the block structure is the same for each transaction.
+ The system still functionally distinguishes between different transactions
  sent.
- Flink supports 4 different transaction types: create, send, receive and
+ Flink supports 4 different transaction types: create, send, receive, and
  update.
- 
 \end_layout
 
 \begin_layout Subsubsection
@@ -749,11 +1072,10 @@ Create Transaction
 \end_layout
 
 \begin_layout Standard
-Before an account can be used for sending or receiving the account has to
- be opened first.
- The account is created with a zero balance.
- Also, the initial public keys are injected at the beginning and the representat
-ive is selected.
+Before an account can be used to send or receive, it must first be opened.
+ The account is set up with a zero balance.
+ Also, at the beginning, the first public keys are injected and the representati
+ve is selected.
 \end_layout
 
 \begin_layout Subsubsection
@@ -761,13 +1083,12 @@ Receive Transaction
 \end_layout
 
 \begin_layout Standard
-Before receiving any transactions, the account has to be created.
- Once successfully created, transactions can be received.
- The transaction is received from a corresponding block hash (receiveBlockHash)
- and sends the transaction to this account.
- Therefore, a block hash has to be referenced from where we receive the
- amount.
- The same block can be referenced only once.
+Before transactions can be received, the account must be created.
+ Once it is successfully created, transactions can be received.
+ The transaction is received by a corresponding block hash (receiveBlockHash)
+ and sent to this account.
+ Therefore, a block hash must be referenced from which we receive the amount.
+ The same block can only be referenced once.
  The received block updates the balance status.
 \end_layout
 
@@ -776,10 +1097,11 @@ Send Transaction
 \end_layout
 
 \begin_layout Standard
-Before first sending a transaction, the account has to have a non-zero balance.
- Once a non-zero value is established, funds can be sent to an account (sendAcco
-untId).
- With the sent block, the account balance is updated.
+Before sending a transaction for the first time, the account must have a
+ non-zero balance.
+ Once a non-zero value is detected, the money can be sent to an account
+ (sendAccountId).
+ The account balance is updated with the send and receive block.
  The balance should never be less than zero.
 \end_layout
 
@@ -788,11 +1110,10 @@ Update Transaction
 \end_layout
 
 \begin_layout Standard
-An update transaction is mostly meant to assign the representative (representati
+An update transaction is usually used to assign the representative (representati
 veNodeId).
- This can be done in creating, updating and receiving transactions also.
- But this kind of transaction is in case nothing is to be sent or received.
- 
+ This can also be done for create, update and receive transactions.
+ But this type of transaction is for when nothing is to be sent or received.
 \end_layout
 
 \begin_layout Subsection
@@ -800,15 +1121,15 @@ Multisig Support
 \end_layout
 
 \begin_layout Standard
-Multisig support is an extremely important feature of every major blockchain.
- Exchanges and enterprise users need this future to increase security and
- to spread the responsibility of fund management.
- Although, multisig-like approaches exist where multiple private keys can
- share one public key.
- These approaches are rather complicated to integrate into production environmen
-ts.
- Therefore, Flink natively supports multisig up to five signatures as the
- block design to specify multiple public keys and signatures.
+Multisig support is an extremely important feature of any large blockchain.
+ Exchanges and enterprise users will need this in the future to increase
+ security and distribute fund management responsibilities.
+ However, there are also multisig-like approaches where multiple private
+ keys can share a public key.
+ These approaches are quite complicated to integrate into production environment
+s.
+ Therefore, Flink inherently supports multisig with up to five signatures
+ as a block design for specifying multiple public keys and signatures.
 \end_layout
 
 \begin_layout Subsection
@@ -816,16 +1137,15 @@ Fast Transaction Times
 \end_layout
 
 \begin_layout Standard
-For a block to be confirmed, a quorum of votes needs to be reached (usually
- 65% of all weight).
- For this to happen quickly, all the representatives with high weights have
- to be interconnected so that message passing and confirmation is as fast
- as possible.
- Each node, therefore, tries to connect with as many as possible representative
- nodes.
- Nodes are also round-trip latency tested so that fast nodes are connected
+In order for a block to be confirmed, a quorum of votes must be reached
+ (majority vote weight ).
+ In order for this to happen quickly, all representatives with high vote
+ weights must be connected to each other so that messaging and confirmation
+ occur as quickly as possible.
+ Each node therefore tries to connect to as many representative nodes as
+ possible.
+ The nodes are also checked for latency so that the fast nodes are connected
  first.
- 
 \end_layout
 
 \begin_layout Subsection
@@ -834,24 +1154,24 @@ Time-Restricted Transactions
 
 \begin_layout Standard
 Each block has a creation timestamp.
- Each transaction can only happen in a predefined time window of, e.g., 10min.
- If the transaction is not confirmed in this time slot, the transaction
- becomes invalid.
- This measure is to help with DOS prevention and also keeps the backlog
- small.
- Usually, DLT systems store all transactions until confirmed, but this gets
- complicated if a transaction is not confirmed in the time frame and can
- standby for confirmation for days.
- This measure basically makes a transaction confirm immediately or be cancelled.
- In which case, the wallet software has to re-resend the transaction.
- The system is designed for low-latency transactions approaches make sense.
+ Each transaction can only occur in a predefined time window of, say, 1-10min.
+ If the transaction is not confirmed in this time window, it becomes invalid.
+ This measure is to help prevent DOS and keep the backlog small.
+ Normally DLT systems shop all transactions until they are confirmed, but
+ this becomes complicated when a transaction is not confirmed within the
+ time frame and can wait for days for confirmation.
+ This action will result in a transaction either being confirmed immediately
+ or cancelled.
+ In this case, the wallet software has to resend the transaction.
+ The system is designed for low-latency transactions, which makes sense.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -895,9 +1215,9 @@ Unclaimed block queue
 \begin_layout Standard
 Since not all nodes are online all the time and accounts can move from one
  node to another.
- It is difficult to require second-tier systems to monitor incoming/unused
+ It is difficult to require second level systems to monitor incoming/unused
  transactions sent to that account.
- For this, Flink implements an unclaimed block queue shown in 
+ For this, Flink implements an unclaimed block queue, shown in 
 \begin_inset Formula $\mbox{Figure}$
 \end_inset
 
@@ -928,7 +1248,7 @@ noprefix "false"
 
 \end_inset
 
-
+,
 \family default
 \series default
 \shape default
@@ -941,12 +1261,12 @@ noprefix "false"
 \uwave default
 \noun default
 \color inherit
- that allows an account owner to always correctly list all unclaimed blocks.
+ which allows an account owner to always correctly list all unclaimed blocks.
  The queue is updated in a separate transcation and is limited in size.
- Account owners must receive transactions on a regular basis or risk not
- being informed of incoming transactions.
- Even if this information is missing, incoming transactions can be made
- at any time.
+ Account holders must receive transactions on a regular basis, otherwise
+ they risk not being informed of incoming transactions.
+ Even if this information is missing, new transactions can be made at any
+ time.
 \end_layout
 
 \begin_layout Section
@@ -954,10 +1274,9 @@ Miscellaneous Features
 \end_layout
 
 \begin_layout Standard
-Flink has some advanced features not usually found in other DLT projects.
- For the most part, the features are modelled after existing banking systems,
- making the transition to a DLT system easier.
- 
+Flink has some advanced features not normally found in other DLT projects.
+ The functions are mostly modelled after existing banking systems, which
+ makes the transition to a DLT system easier.
 \end_layout
 
 \begin_layout Subsection
@@ -985,16 +1304,16 @@ Quantum Safety
 \end_layout
 
 \begin_layout Standard
-As quantum computers slowly evolve, quantum safety is becoming more and
- more important.
- Elliptic-curve cryptography is vulnerable to quantum-based attacks, and
- quantum-resistant cyphers are not yet popular and fully proven.
- Because of that, Flink is designed with cyphers interchangeability in mind.
- For instance, account addresses are not created from public keys but are
- generated randomly.
- The current valid public keys are specified with the last confirmed block.
- This allows keys and, in future, cyphers to change more easily.
- 
+With the development of quantum computers, quantum security is becoming
+ increasingly important.
+ Elliptic curve cryptography is vulnerable to quantum-based attacks, and
+ quantum-resistant cyphers are not yet widely and fully tested.
+ For this reason, Flink was designed with cyphers interchangeability in
+ mind.
+ For example, account addresses are not created from public keys, but are
+ randomly generated.
+ The currently valid public keys are specified with the last confirmed block.
+ This makes it easier to exchange keys and, in the future, also cyphers.
 \end_layout
 
 \begin_layout Subsection
@@ -1002,14 +1321,13 @@ Reference Number/Code
 \end_layout
 
 \begin_layout Standard
-The traditional banking system usually uses payment reference numbers to
- identify individual payments.
- In DLT, each payment is usually sent to its own address.
- Because of Flink’s account-based design, an extra payment reference code
- was added to the block.
- This is a practical approach for tracking payments that are usually missing
- in DLT designs.
- 
+The traditional banking system typically uses payment reference numbers
+ to identify individual payments.
+ With DLT, each payment is usually sent to a separate address.
+ Because of Flink's account-based design, an additional payment reference
+ code has been added to the block.
+ This is a practical approach to tracking payments that is usually missing
+ in DLT concepts.
 \end_layout
 
 \begin_layout Section
@@ -1017,13 +1335,20 @@ Attack Prevention
 \end_layout
 
 \begin_layout Standard
-The most problematic attack thread of a feeless payment system is DOS (denial
- of service) and DDOS (distributed denial of service) attacks.
- Because transactions are free, the system is very vulnerable to spam transactio
-ns overloading the whole system.
- In Flink, many parts of the system are specially designed to prevent such
- attacks to succeed.
- 
+The most problematic attack point of a feeless payment system are DOS (Denial
+ of Service) and DDOS (Distributed Denial of Service)(
+\begin_inset CommandInset citation
+LatexCommand citet
+key "886455"
+literal "false"
+
+\end_inset
+
+) attacks.
+ Since transactions are free, the system is very vulnerable to spam transactions
+ that overload the entire system.
+ In Flink, many parts of the system are specifically designed to prevent
+ such attacks.
 \end_layout
 
 \begin_layout Subsection
@@ -1031,14 +1356,15 @@ DOS Attacks
 \end_layout
 
 \begin_layout Standard
-Here we outline the common DOS attacks the system is most susceptible to.
- DOS attacks are hard to completely eliminate, especially in a system without
- fees.
- But the system still has many approaches to counter such attacks.
- Overall, the system per the CAP theorem favours consistency and partition
- tolerance over availability.
- But availability is potentially sacrificed only during the active attack
- phase.
+The following describes the most common DOS attacks to which the system
+ is most vulnerable.
+ DOS Attacks are difficult to completely eliminate, especially in a system
+ without fees.
+ However, the system has many approaches to counter such attacks.
+ Overall, according to the CAP theorem, the system prefers consistency and
+ partition tolerance over availability.
+ However, availability is potentially sacrificed only during the active
+ attack phase.
 \end_layout
 
 \begin_layout Subsubsection
@@ -1047,12 +1373,11 @@ Node Overflow Attack
 
 \begin_layout Standard
 In this attack, the entity creates multiple node addresses.
- As all nodes need to be confirmed before being added to the database, this
- can add extreme strain on the whole system.
+ Since all nodes must be confirmed before they are added to the database,
+ this can place an extreme load on the entire system.
  The system protects itself by limiting the number of nodes that can be
- created per day (initially set to 100).
- With this protection, the system will operate normally under these conditions.
- 
+ created per day (adjustable parameter).
+ With this protection, the system will function normally under these conditions.
 \end_layout
 
 \begin_layout Subsubsection
@@ -1060,17 +1385,16 @@ Account Overflow Attack
 \end_layout
 
 \begin_layout Standard
-This attack overflows the network with multiple accounts.
- Every node will be able to publish only a limited number of blocks (also
- account creating blocks).
- For this attack to succeed, the attacker has to have access to a node with
- a very high weight as the publish rate is dependent on the node's confirmation
+This attack floods the network with multiple accounts.
+ Each node can only publish a limited number of blocks (including account-creati
+ng blocks).
+ For this attack to succeed, the attacker must have access to a node with
+ a very high weight, since the publication rate depends on the node's voting
  weight.
  Even then, the rate is capped, so the probability of completely disabling
- the whole network is low.
- And nodes with high weight will mostly be managed by crypto exchanges which
- will probably monitor the node integrity and status.
- 
+ the entire network is low.
+ Also, high weight nodes are usually managed by crypto exchanges, which
+ are likely to monitor the integrity and status of the nodes.
 \end_layout
 
 \begin_layout Subsubsection
@@ -1078,14 +1402,13 @@ Transaction Overflow Attack
 \end_layout
 
 \begin_layout Standard
-This attack overflows the network with multiple transactions.
- Like in the previous case, every node will be able to publish only a limited
- number of blocks (also account creating blocks).
- For an attack to succeed, the attacker has to have access to a node with
- a very high weight, which is not trivial to achieve.
- Additionally, PoW might be introduced in future to further prevent transaction
- spam.
- 
+In this attack, the network is overrun with multiple transactions.
+ As in the previous case, each node can only publish a limited number of
+ blocks (including account creation blocks).
+ For an attack to be successful, the attacker must have access to a node
+ with a very high weight, which is not easy to achieve.
+ Additionally, PoW might be introduced in the future to further prevent
+ transaction spam.
 \end_layout
 
 \begin_layout Subsubsection
@@ -1093,12 +1416,12 @@ Unconfirmed Transaction Overflow Attack
 \end_layout
 
 \begin_layout Standard
-This attack targets the unconfirmed transaction queue of every account.
+This attack targets each account's unconfirmed transaction queue.
  Accounts are required to confirm all incoming transactions.
- Once the queue reaches a certain size, new elements get discarded.
- This makes the attack very difficult to really compromise the system.
- The account owner can still receive transactions that aren’t in the queue
- but has to query for them manually.
+ Once the queue reaches a certain size, new items are discarded.
+ This makes it very difficult to actually compromise the system.
+ The account holder can still receive transactions that aren't in the queue,
+ but must manually retrieve them.
 \end_layout
 
 \begin_layout Subsubsection
@@ -1106,11 +1429,10 @@ Brute Force Attack
 \end_layout
 
 \begin_layout Standard
-In case of a DDOS attack, nodes can be removed from the network.
- Such an attack could temporarily make the system unavailable for confirmations
- as the 65% voting weight wouldn't be reached.
- The system would quickly recover once the attack stops.
- 
+In the event of a DDOS attack, nodes may be removed from the network.
+ Such an attack could cause the system to become temporarily unavailable
+ for confirmations, as the majority voting weight wouldn't be reached.
+ The system would recover quickly once the attack is over.
 \end_layout
 
 \begin_layout Subsection
@@ -1118,13 +1440,17 @@ System Integrity Attacks
 \end_layout
 
 \begin_layout Standard
-In these attacks, the attacker usually tries to gain some kind of financial
- gain.
- Usually they will try to double-spend or something similar.
- The ORV consensus algorithm governs the integrity of the system.
- All transactions need to be confirmed with 65% weights within a time interval.
- For the system to compromise, the system someone would need to obtain a
- 65% voting weight.
+In these attacks, the attacker is usually trying to gain a financial advantage.
+ Usually, they try to double-spend or something similar.
+ The consensus algorithm ensures the integrity of the system.
+ All transactions must be confirmed within a time interval with 
+\begin_inset Formula $\left[\frac{W_{T}}{2}+1\right]$
+\end_inset
+
+ voting weight.
+ For the system to be compromised, someone would have to receive a majority
+ voting weight.
+ In practice this weight is set to a higher number to further increase security.
 \end_layout
 
 \begin_layout Subsubsection
@@ -1132,11 +1458,14 @@ Primary Protection
 \end_layout
 
 \begin_layout Standard
-As 65% voting weight is rather large, the attacker would need large investments
- to gain so much voting weight, which is unlikely.
- Also, such investments would destroy the network and make the investment
- forfeit.
- 
+Since 
+\begin_inset Formula $\left[\frac{W_{T}}{2}+1\right]$
+\end_inset
+
+ voting weight is quite large, the attacker would have to make large investments
+ to gain that much voting weight, which is unlikely.
+ Moreover, such investments would destroy the network and cause the investment
+ to expire.
 \end_layout
 
 \begin_layout Subsubsection
@@ -1144,13 +1473,17 @@ Fork protection
 \end_layout
 
 \begin_layout Standard
-Local forks can happen in the case an account publishes two transactions
- with the same previous block.
- In this case, both transactions will be sent for voting, but each node
- can vote only for one of the transactions.
- The transaction which will achieve 65% will be persisted.
- If no transaction achieves 65% in the set time interval, both transactions
- forfeit.
+Local forks can occur when an account publishes two transactions with the
+ same previous block.
+ In this case, both transactions are voted on, but each node can only vote
+ for one of the transactions.
+ The transaction that reaches 
+\begin_inset Formula $\left[\frac{W_{T}}{2}+1\right]$
+\end_inset
+
+ will be persisted.
+ If neither transaction reaches a majority within the specified time interval,
+ both transactions are discarded.
 \end_layout
 
 \begin_layout Section
@@ -1158,15 +1491,15 @@ Implementation
 \end_layout
 
 \begin_layout Standard
-At the implementation phase, the design decision was made to create the
- system in a higher (managed) programming language.
- Therefore C, C++ was not considered.
- In the author's opinion, the system very much resembles an IT system with
- large storage and database requirements.
- Such systems are usually performance limited by the database design and
- not the selected programming language.
- Therefore, the reference implementation was created in Java.
- The implementation is available at Github as an open-source project under
+In the implementation phase, the decision was made to build the system in
+ a higher level (managed) programming language.
+ Therefore, C, C++ were not considered.
+ In the author's opinion, the system closely resembles a IT system with
+ large memory and database requirements.
+ Such systems are usually limited in performance by the database design
+ and not by the programming language chosen.
+ Therefore, the reference implementation was written in Java.
+ The implementation is available on Github as an open source project under
  the Apache license.
 \end_layout
 
@@ -1175,11 +1508,10 @@ Network
 \end_layout
 
 \begin_layout Standard
-The system uses protobuf for message serialization over a TCP stream.
+The system uses protobuf to serialize messages over a TCP stream.
  Connections between hosts are limited to one, which is a full duplex.
- Connection handling is asynchronous with a low memory footprint, allowing
- for multiple connections.
- 
+ Connection handling is asynchronous with low memory requirements, allowing
+ multiple connections.
 \end_layout
 
 \begin_layout Subsection
@@ -1187,7 +1519,7 @@ Storage
 \end_layout
 
 \begin_layout Standard
-For storage, RocksDB key value store is used.
+RocksDB key value store is used for storage.
  RocksDB is a highly scalable and performant database with transaction support
  developed by Facebook.
 \end_layout
@@ -1197,7 +1529,15 @@ Cryptography
 \end_layout
 
 \begin_layout Standard
-For signing, ED25519 is used with standard SHA-512 hashing.
+For signing, ED25519 (
+\begin_inset CommandInset citation
+LatexCommand citet
+key "ches-2011-24091"
+literal "false"
+
+\end_inset
+
+) is used with standard SHA-512 hashing.
  Key derivation is based on BIP32 with ED25519 modification in SLIP-0100.
 \end_layout
 
@@ -1206,13 +1546,18 @@ Conclusion
 \end_layout
 
 \begin_layout Standard
-Here we present a distributed feeless payment system with a fast transaction
+Here we present a distributed feeless payment system with fast transaction
  confirmation time.
- The system is based on the ORV consensus mechanism with a block-lattice
- data structure.
- As there is no PoW mining involved, the system is very energy efficient
- and can be run on modest hardware.
- 
+ The system is based on a voting-based consensus mechanism with a block
+ lattice data structure.
+ Since it does not involve PoW mining, the system is highly energy efficient
+ and can be operated on modest hardware.
+ The system can be operated by the community with minimal investment while
+ being secure and reliable.
+\begin_inset Newpage pagebreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

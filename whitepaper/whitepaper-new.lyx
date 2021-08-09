@@ -192,7 +192,7 @@ The perfect payment system is:
 \end_layout
 
 \begin_layout Itemize
-Feeless or almost zero fees: Zero fee makes sending money attractive and
+Feeless or almost zero fee: Zero fee makes sending money attractive and
  enables various business opportunities.
  
 \end_layout
@@ -243,11 +243,10 @@ s can be confirmed asynchronously, rather than synchronously as in a linear
  This drastically lowers transaction confirmation times, making them mostly
  instantaneous (in the range of 1-3s) and also improves transaction throughput
  to over 1000 tps.
- Nano has achieved most of its goals, but availability and stability suffer
- from its uncaring design.
+ Feeless DAG systems achieve most of these goals, but availability and stability
+ suffer from such a design.
  Without transaction fees, DDOS attacks are very cheap, and recent attacks
- on the Nano network have further highlighted this vulnerability.
- 
+ on the Nano network have further illustrated this vulnerability.
 \end_layout
 
 \begin_layout Standard
@@ -494,10 +493,10 @@ noprefix "false"
 \end_inset
 
 .
- This approach is particularly suitable for systems, since the cost of validatin
-g a transaction is low and without risk.
+ This approach is particularly suitable for feeless systems, since the cost
+ of validating a transaction is low and without risk.
  With PoW (Proof of Work) the cost is very high and with PoS (Proof of Stake)
- there is some risk when staking the currency.
+ there is potential risk when staking the currency.
 \end_layout
 
 \begin_layout Standard
@@ -1550,7 +1549,7 @@ Here we present a distributed feeless payment system with fast transaction
  confirmation time.
  The system is based on a voting-based consensus mechanism with a block
  lattice data structure.
- Since it does not involve PoW mining, the system is highly energy efficient
+ Since it does not involve mining, the system is highly energy efficient
  and can be operated on modest hardware.
  The system can be operated by the community with minimal investment while
  being secure and reliable.

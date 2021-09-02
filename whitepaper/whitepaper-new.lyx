@@ -91,7 +91,7 @@ Flink: The Fast Distributed Payment Network
 \end_layout
 
 \begin_layout Author
-Matej
+M.
 \begin_inset space ~
 \end_inset
 
@@ -106,7 +106,7 @@ https://www.flinkcoin.org/
 \begin_layout Address
 \begin_inset CommandInset href
 LatexCommand href
-target "matejgrasic@flinkcoin.org"
+target "info@flinkcoin.org"
 type "mailto:"
 literal "false"
 
@@ -120,8 +120,8 @@ literal "false"
 \end_layout
 
 \begin_layout Abstract
-Abstract Cryptocurrency appeared as an interesting technology that promised
- to revolutionize the payment system.
+Cryptocurrency appeared as an interesting technology that promised to revolution
+ize the payment system.
  But over time, cryptocurrencies have been backed into a corner and confined
  to store of value speculation.
  Cryptocurrencies are almost never used as a means of payment and most transacti
